@@ -1,12 +1,13 @@
+import { getPromotion } from "./src/apis/promotion/getPromotion";
 import Banner from "./src/components/layout/Banner";
 import Footer from "./src/components/layout/Footer";
 import Navbar from "./src/components/layout/Navbar";
 import PromotionFilterSidebar from "./src/components/promotion/PromotionFilterSidebar";
 import PromotionList from "./src/components/promotion/PromotionList";
-import { fetchAPI } from "./src/libs/api";
 
 export default async function Home() {
-  const restaurantsData = await fetchAPI("/api/restaurants?populate=thumbnail");
+  const resPromtions = await getPromotion();
+  console.log("resPromtions", resPromtions);
   return (
     <div>
       <Navbar />
@@ -16,7 +17,7 @@ export default async function Home() {
           <PromotionFilterSidebar />
         </div>
         <div className="col-span-3">
-          <PromotionList />
+          <PromotionList promotions={resPromtions} />
         </div>
       </main>
       <Footer />
