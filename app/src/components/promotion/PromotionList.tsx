@@ -1,7 +1,11 @@
 import { Input } from "@/components/ui/input";
 import PromotionCard from "./PromotionCard";
-
-export default function PromotionList() {
+import { Search } from "lucide-react";
+type Props = {
+  promotions: any[];
+};
+export default function PromotionList({ promotions }: Props) {
+  console.log("data là: ", promotions);
   return (
     <section className="flex flex-col gap-6">
       <Input
@@ -10,12 +14,12 @@ export default function PromotionList() {
         className="h-14 bg-white"
       />
       <span>
-        Có <strong>50</strong> ưu đãi:{" "}
+        Có <strong>{promotions.length}</strong> ưu đãi:{" "}
       </span>
       <div className="grid grid-cols-3 gap-6">
-        <PromotionCard />
-        <PromotionCard />
-        <PromotionCard />
+        {promotions.map((item) => (
+          <PromotionCard key={item.id} promotion={item} />
+        ))}
       </div>
     </section>
   );
