@@ -1,4 +1,5 @@
 import Banner from "./src/components/layout/Banner";
+import Footer from "./src/components/layout/Footer";
 import Navbar from "./src/components/layout/Navbar";
 import PromotionFilterSidebar from "./src/components/promotion/PromotionFilterSidebar";
 import PromotionList from "./src/components/promotion/PromotionList";
@@ -18,6 +19,7 @@ export default async function Home() {
           <PromotionList />
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
