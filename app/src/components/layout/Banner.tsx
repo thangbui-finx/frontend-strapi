@@ -4,6 +4,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 export default function Banner({ banners }: any) {
+  const list = banners ?? [];
   return (
     <Swiper
       modules={[Pagination, Autoplay]}
@@ -11,7 +12,7 @@ export default function Banner({ banners }: any) {
       autoplay={{ delay: 5000 }}
       loop
     >
-      {banners.map((item: any) => {
+      {list.map((item: any) => {
         const imageUrl = process.env.NEXT_PUBLIC_API_URL + item.image.url;
         return (
           <SwiperSlide key={item.id}>
