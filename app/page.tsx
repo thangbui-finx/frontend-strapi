@@ -1,3 +1,4 @@
+import getBanners from "./src/apis/banners/getBanners";
 import { getPromotion } from "./src/apis/promotion/getPromotion";
 import Banner from "./src/components/layout/Banner";
 import Footer from "./src/components/layout/Footer";
@@ -15,6 +16,7 @@ type Props = {
 export default async function Home({ searchParams }: Props) {
   const params = await searchParams;
   console.log("page.tsx searchParams:", params);
+  const banners = await getBanners();
   const res = await getPromotion({
     categories: params.categories,
     partners: params.partners,
@@ -24,7 +26,7 @@ export default async function Home({ searchParams }: Props) {
   return (
     <div>
       <Navbar />
-      <Banner />
+      <Banner banner={banners} />
       <main className="grid grid-cols-4 gap-6 p-12 pt-10 bg-gray-100">
         <div className="col-span-1">
           <PromotionFilterSidebar />
