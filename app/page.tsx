@@ -5,9 +5,22 @@ import Navbar from "./src/components/layout/Navbar";
 import PromotionFilterSidebar from "./src/components/promotion/PromotionFilterSidebar";
 import PromotionList from "./src/components/promotion/PromotionList";
 
-export default async function Home() {
-  const resPromtions = await getPromotion();
-  console.log("resPromtions", resPromtions);
+type Props = {
+  searchParams: Promise<{
+    categories?: string;
+    partners?: string;
+    customer_groups?: string;
+  }>;
+};
+export default async function Home({ searchParams }: Props) {
+  const params = await searchParams;
+  console.log("page.tsx searchParams:", params);
+  const res = await getPromotion({
+    categories: params.categories,
+    partners: params.partners,
+    customer_groups: params.customer_groups,
+  });
+  console.log("page.tsx res:", res);
   return (
     <div>
       <Navbar />
@@ -17,7 +30,7 @@ export default async function Home() {
           <PromotionFilterSidebar />
         </div>
         <div className="col-span-3">
-          <PromotionList promotions={resPromtions} />
+          <PromotionList promotions={res} />
         </div>
       </main>
       <Footer />
