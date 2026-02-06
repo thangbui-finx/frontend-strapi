@@ -29,7 +29,7 @@ export const NavbarItems = [
 ];
 export default function Navbar() {
   return (
-    <header className="flex gap-30  items-center justify-around">
+    <header className="flex gap-30 sticky top-0 z-50 bg-white  items-center justify-around">
       <div className="text-lg">
         <img src="/logo.svg" alt="" className="h-20 w-60 ml-15 " />
       </div>
