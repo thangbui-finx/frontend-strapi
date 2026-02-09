@@ -123,3 +123,19 @@
     @apply bg-background text-foreground;
   }
 }
+.banner-gradient {
+  background: linear-gradient(
+    25deg,
+    #00f 4.47%,
+    #0300fc 13.5%,
+    #0e00f6 21.53%,
+    #2100ec 29.56%,
+    #3c00dd 37.58%,
+    #5e00cb 44.61%,
+    #8800b4 52.63%,
+    #b90099 60.66%,
+    #d2008c 63.67%,
+    #ff8a00 84.75%,
+    #ffb800 104.81%
+  );
+}

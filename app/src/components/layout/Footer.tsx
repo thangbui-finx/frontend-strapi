@@ -5,7 +5,42 @@ import Banner from "./Banner";
 export default function Footer() {
   return (
     <div>
-      <Banner />
+      <div className=" grid grid-cols-3 p-4 inset-0 banner-gradient px-20">
+        <div className="">
+          <img
+            src="/phoneVikki.png
+        
+        "
+            alt="phoneVikki"
+            className="w-70 h-80"
+          />
+        </div>
+        <div className="flex flex-col  justify-center gap-6">
+          <h3 className="text-3xl font-sans text-white font-extrabold">
+            Tận hưởng
+            <br />
+            Ngân hàng số Vikki
+          </h3>
+          <div className="text-white  text-md">
+            01 phút mở tài khoản, ngàn đặc quyền đang chờ bạn!
+          </div>
+        </div>
+        <div className="flex justify-center items-center gap-6">
+          <div className="">
+            <img src="/qrVikki.png" alt="" className="h-30 w-30" />
+          </div>
+          <div className="flex flex-col gap-4">
+            <img src="/appstoreVikki.png" alt="" className="h-12 w-25" />
+            <img src="/ggplayVikki.png" alt="" className="h-12 w-25" />
+          </div>
+        </div>
+        <br />
+        {/*  <Button className="w-[30%] h-[55%] p-4 flex justify-between">
+          <span className="text-lg">Liên hệ ngay</span>
+          <ArrowRight className="w-5 h-5" />
+        </Button> */}
+      </div>
+
       <footer className="bg-[#313131] p-5 ">
         <div className="flex justify-between p-10">
           <div>
