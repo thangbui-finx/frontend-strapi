@@ -42,9 +42,9 @@ export default function Navbar() {
       </nav>
       <Button
         variant={"outline"}
-        className="bg-red-500 h-15 text-white font-extrabold text-xl"
+        className="banner-gradient h-10 text-white rounded-3xl mr-2 font-extrabold text-sm"
       >
-        Đăng nhập
+        Đăng nhập eBanking
         <ArrowRight />
       </Button>
     </header>
