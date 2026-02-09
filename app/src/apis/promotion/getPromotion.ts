@@ -4,9 +4,13 @@ type Params = {
   partners?: string;
   customer_groups?: string;
   products?: string;
+  search?: string;
 };
 export async function getPromotion(param?: Params) {
   const query = new URLSearchParams();
+  if (param?.search) {
+    query.append("filters[title][$containsi]", param.search);
+  }
   query.append("populate", "*");
   if (param?.categories) {
     const ids = param.categories.split(",");
@@ -21,7 +25,10 @@ export async function getPromotion(param?: Params) {
     query.append("filters[customer_groups][id][$in]", param.customer_groups);
   }
   if (param?.products) {
-    query.append("filters[products][id][$in]", param.products);
+    const ids = param.products.split(",");
+    ids.forEach((id) => {
+      query.append("filters[products][id][$in]", id);
+    });
   }
   console.log(`${API_URL}/api/promotions?${query.toString()}`);
   const res = await fetch(`${API_URL}/api/promotions?${query.toString()}`, {

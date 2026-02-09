@@ -14,11 +14,11 @@ export default async function PromotionFilterSidebar() {
 
   return (
     <aside className="flex gap-10 flex-col">
+      <FilterGroup title="Sản phẩm" items={products} />
       <FilterGroup title="Phân loại" items={categories} />
       <FilterGroup title="Nhóm khách hàng" items={customerGroup} />
       <FilterGroup title="Địa điểm" items={locations} />
       <FilterGroup title="Đối tác" items={partners} />
-      <FilterGroup title="Sản phẩm" items={products} />
     </aside>
   );
 }

@@ -12,6 +12,7 @@ type Props = {
     partners?: string;
     customer_groups?: string;
     products?: string;
+    search?: string;
   }>;
 };
 export default async function Home({ searchParams }: Props) {
@@ -23,6 +24,7 @@ export default async function Home({ searchParams }: Props) {
     partners: params.partners,
     customer_groups: params.customer_groups,
     products: params.products,
+    search: params.search,
   });
   return (
     <div>

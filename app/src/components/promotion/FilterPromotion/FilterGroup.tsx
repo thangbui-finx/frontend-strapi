@@ -45,6 +45,24 @@ export default function FilterGroup({ title, items }: Props) {
     }
     router.push(`/?${params.toString()}`);
   }
+
+  function toggleMultiple(ids: number[], select: boolean) {
+    let next = [...selectedValues];
+    if (select) {
+      ids.forEach((id) => {
+        if (!next.includes(String(id))) next.push(String(id));
+      });
+    } else {
+      next = next.filter((x) => !ids.includes(Number(x)));
+    }
+    const params = new URLSearchParams(searchParams.toString());
+    if (next.length) {
+      params.set(paramsKey, next.join(","));
+    } else {
+      params.delete(paramsKey);
+    }
+    router.push(`/?${params.toString()}`);
+  }
   return (
     <div className="flex flex-col justify-center mb-4">
       <h4 className="font-semibold mb-7">
@@ -56,6 +74,7 @@ export default function FilterGroup({ title, items }: Props) {
           products={items}
           selectedValues={selectedValues}
           onToggle={toggleCheckbox}
+          onToggleMany={toggleMultiple}
         />
       )}
       {title !== "Sản phẩm" && title !== "Địa điểm" && title !== "Đối tác" ? (
