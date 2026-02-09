@@ -21,7 +21,10 @@ export async function getPromotion(param?: Params) {
     query.append("filters[customer_groups][id][$in]", param.customer_groups);
   }
   if (param?.products) {
-    query.append("filters[products][id][$in]", param.products);
+    const ids = param.products.split(",");
+    ids.forEach((id) => {
+      query.append("filters[products][id][$in]", id);
+    });
   }
   console.log(`${API_URL}/api/promotions?${query.toString()}`);
   const res = await fetch(`${API_URL}/api/promotions?${query.toString()}`, {

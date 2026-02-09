@@ -6,11 +6,13 @@ type Props = {
   products: any[];
   selectedValues: string[];
   onToggle: (id: number) => void;
+  onToggleMany?: (ids: number[], select: boolean) => void;
 };
 export default function ProductTree({
   products,
   selectedValues,
   onToggle,
+  onToggleMany,
 }: Props) {
   const grouped = groupProductsByType(products);
   const [openTypes, setOpenTypes] = useState<Record<string, boolean>>({});
@@ -20,33 +22,66 @@ export default function ProductTree({
       [type]: !prev[type],
     }));
   };
+  const toggleTypeGroup = (type: string) => {
+    const typeProducts = grouped[type] ?? [];
+    const allSelected = typeProducts.every((p: any) =>
+      selectedValues.includes(String(p.id)),
+    );
+    if (onToggleMany) {
+      if (allSelected) {
+        onToggleMany(
+          typeProducts.map((p: any) => p.id),
+          false,
+        );
+      } else {
+        const idsToSelect = typeProducts
+          .filter((p: any) => !selectedValues.includes(String(p.id)))
+          .map((p: any) => p.id);
+        onToggleMany(idsToSelect, true);
+      }
+      return;
+    }
+    typeProducts.forEach((p: any) => {
+      const isSelected = selectedValues.includes(String(p.id));
+      if (allSelected && isSelected) onToggle(p.id);
+      if (!allSelected && !isSelected) onToggle(p.id);
+    });
+  };
   return (
-    <div className="w-full space-y-2 pl-3">
+    <div className="flex flex-col w-full space-y-2 pl-3 gap-2">
       {Object.keys(TYPE_LABEL).map((type) => (
         <div key={type} className="">
-          <button
-            onClick={() => toggle(type)}
-            className="flex items-center mb-4 justify-between w-full font-medium text-left"
-          >
-            <div className="flex items-center justify-between w-full  "> 
-              <span className="flex items-center justify-center gap-3 text-md text-gray-500">
-                <input
-                  type="checkbox"
-                  checked={selectedValues.includes(String(type.id))}
-                  onChange={() => onToggle(type.id)}
-                  className="w-6 h-5  border-none cursor-pointer"
-                />
-                {TYPE_LABEL[type]}
-              </span>
-              {openTypes[type] ? (
-                <Minus className="w-4 h-4" />
-              ) : (
-                <Plus className="w-4 h-4" />
-              )}
-            </div>
-          </button>
+          <div className="flex gap-2 justify-center  items-center">
+            <input
+              type="checkbox"
+              checked={
+                (grouped[type] ?? []).length > 0 &&
+                (grouped[type] ?? []).every((p: any) =>
+                  selectedValues.includes(String(p.id)),
+                )
+              }
+              onChange={() => toggleTypeGroup(type)}
+              className="w-6 h-5  border-none cursor-pointer"
+            />
+            <button
+              onClick={() => toggle(type)}
+              className=" w-full font-medium "
+            >
+              <div className="flex items-center justify-between w-full  ">
+                <span className="flex items-center justify-center gap-3 text-md text-gray-500">
+                  {TYPE_LABEL[type]}
+                </span>
+                {openTypes[type] ? (
+                  <Minus className="w-4 h-4" />
+                ) : (
+                  <Plus className="w-4 h-4" />
+                )}
+              </div>
+            </button>
+          </div>
+
           {openTypes[type] && (
-            <ul>
+            <ul className="pl-6 w-full mt-4 ">
               {grouped[type]?.map((product: any) => (
                 <li
                   key={product.id}

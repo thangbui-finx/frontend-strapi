@@ -29,7 +29,7 @@ export default async function Home({ searchParams }: Props) {
     <div>
       <Navbar />
       <Banner />
-      <main className="grid grid-cols-4 gap-6 p-12 pt-10 bg-white">
+      <main className="grid grid-cols-4 gap-8 p-12 pt-10 bg-white">
         <div className="col-span-1">
           <PromotionFilterSidebar />
         </div>
