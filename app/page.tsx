@@ -26,12 +26,11 @@ export default async function Home({ searchParams }: Props) {
     products: params.products,
     search: params.search,
   });
-  console.log("page.tsx res:", res);
   return (
     <div>
       <Navbar />
-      <Banner />
-      <main className="grid grid-cols-4 gap-8 p-12 pt-10 bg-white">
+      <Banner banners={banners} />
+      <main className="grid grid-cols-4 gap-6 p-12 pt-10 bg-gray-100">
         <div className="col-span-1">
           <PromotionFilterSidebar />
         </div>
