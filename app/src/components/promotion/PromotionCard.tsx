@@ -15,14 +15,26 @@ export default function PromotionCard({ promotion }: Props) {
   const thumbnail = promotion.thumbnail?.url;
   const typeCard = promotion.products.map((p: any) => p.type);
   return (
-    <div className="bg-white rounded-lg">
-      <img src={`${API_URL}${thumbnail}`} alt="" className="h-50 w-70" />
-      <div className="flex  flex-col p-4 gap-4 py-6">
+    <div className="rounded-lg banner-gradient">
+      <div className="p-2 flex justify-center items-center">
+        <img
+          src={`${API_URL}${thumbnail}`}
+          alt=""
+          className="rounded-md h-50 w-full"
+        />
+      </div>
+
+      <div className="flex flex-col p-4 gap-3 py-5">
         <span className="text-red-500 font-semibold">{typeCard[0]}</span>
-        <h4 className="font-bold">{partners[0]?.name}</h4>
-        <p className="text-gray-500">{title}</p>
-        <p className="text-gray-500">Kết thúc: {formatRegisterDeadline}</p>
-        <a href="" className="flex gap-2 font-semibold hover:text-red-600">
+        <h4 className="font-bold bg-amber-500 text-white w-[40%] rounded-md text-center">
+          {partners[0]?.name}
+        </h4>
+        <p className="text-white">{title}</p>
+        <p className="text-red-500">Kết thúc: {formatRegisterDeadline}</p>
+        <a
+          href=""
+          className="flex gap-2 font-semibold text-white  hover:text-red-600"
+        >
           Xem chi tiết <ArrowRight />
         </a>
       </div>
