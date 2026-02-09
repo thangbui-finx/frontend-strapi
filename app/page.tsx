@@ -1,5 +1,7 @@
+import getBanners from "./src/apis/banners/getBanners";
 import { getPromotion } from "./src/apis/promotion/getPromotion";
 import Banner from "./src/components/layout/Banner";
+import Footer from "./src/components/layout/Footer";
 import Navbar from "./src/components/layout/Navbar";
 import PromotionFilterSidebar from "./src/components/promotion/PromotionFilterSidebar";
 import PromotionList from "./src/components/promotion/PromotionList";
@@ -15,6 +17,7 @@ type Props = {
 export default async function Home({ searchParams }: Props) {
   const params = await searchParams;
   console.log("page.tsx searchParams:", params);
+  const banners = await getBanners();
   const res = await getPromotion({
     categories: params.categories,
     partners: params.partners,
@@ -34,6 +37,7 @@ export default async function Home({ searchParams }: Props) {
           <PromotionList promotions={res} />
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
