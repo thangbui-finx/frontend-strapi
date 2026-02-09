@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-export default function Banner({ banners }: any) {
+export default function Banner({ banners = [] }: any) {
+  console.log("Data banner", banners);
+
   return (
     <Swiper
       modules={[Pagination, Autoplay]}
