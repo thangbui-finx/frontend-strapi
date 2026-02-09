@@ -9,12 +9,14 @@ import {
 } from "@/components/ui/combobox";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import ProductTree from "./ProductTree";
 
 type Props = {
   title: string;
   items: any[];
 };
 const QUERY_KEY: Record<string, string> = {
+  "Sản phẩm": "products",
   "Phân loại": "categories",
   "Nhóm khách hàng": "customer_groups",
   "Địa điểm": "locations",
@@ -49,7 +51,14 @@ export default function FilterGroup({ title, items }: Props) {
         {title}
         <hr />
       </h4>
-      {title !== "Địa điểm" && title !== "Đối tác" ? (
+      {title === "Sản phẩm" && (
+        <ProductTree
+          products={items}
+          selectedValues={selectedValues}
+          onToggle={toggleCheckbox}
+        />
+      )}
+      {title !== "Sản phẩm" && title !== "Địa điểm" && title !== "Đối tác" ? (
         <div className="flex flex-col gap-5">
           {items.map((item) => (
             <label key={item.id} htmlFor="" className="flex gap-3 items-center">
@@ -65,7 +74,7 @@ export default function FilterGroup({ title, items }: Props) {
             </label>
           ))}
         </div>
-      ) : (
+      ) : title !== "Sản phẩm" ? (
         <Combobox items={items} value={value}>
           <ComboboxInput
             placeholder={`Chọn ${title.toLowerCase()} `}
@@ -95,7 +104,7 @@ export default function FilterGroup({ title, items }: Props) {
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
-      )}
+      ) : null}
     </div>
   );
 }

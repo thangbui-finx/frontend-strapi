@@ -3,6 +3,7 @@ type Params = {
   categories?: string;
   partners?: string;
   customer_groups?: string;
+  products?: string;
 };
 export async function getPromotion(param?: Params) {
   const query = new URLSearchParams();
@@ -19,6 +20,10 @@ export async function getPromotion(param?: Params) {
   if (param?.customer_groups) {
     query.append("filters[customer_groups][id][$in]", param.customer_groups);
   }
+  if (param?.products) {
+    query.append("filters[products][id][$in]", param.products);
+  }
+  console.log(`${API_URL}/api/promotions?${query.toString()}`);
   const res = await fetch(`${API_URL}/api/promotions?${query.toString()}`, {
     cache: "no-store",
   });

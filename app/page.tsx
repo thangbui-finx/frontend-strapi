@@ -9,6 +9,7 @@ type Props = {
     categories?: string;
     partners?: string;
     customer_groups?: string;
+    products?: string;
   }>;
 };
 export default async function Home({ searchParams }: Props) {
@@ -18,13 +19,14 @@ export default async function Home({ searchParams }: Props) {
     categories: params.categories,
     partners: params.partners,
     customer_groups: params.customer_groups,
+    products: params.products,
   });
   console.log("page.tsx res:", res);
   return (
     <div>
       <Navbar />
       <Banner />
-      <main className="grid grid-cols-4 gap-6 p-12 pt-10 bg-gray-100">
+      <main className="grid grid-cols-4 gap-6 p-12 pt-10 bg-white">
         <div className="col-span-1">
           <PromotionFilterSidebar />
         </div>
