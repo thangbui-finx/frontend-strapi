@@ -5,7 +5,6 @@ type Props = {
   promotions: any[] | undefined;
 };
 export default function PromotionList({ promotions }: Props) {
-  console.log("data là: ", promotions);
   return (
     <section className="flex flex-col gap-6">
       <Input
