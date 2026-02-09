@@ -4,9 +4,13 @@ type Params = {
   partners?: string;
   customer_groups?: string;
   products?: string;
+  search?: string;
 };
 export async function getPromotion(param?: Params) {
   const query = new URLSearchParams();
+  if (param?.search) {
+    query.append("filters[title][$containsi]", param.search);
+  }
   query.append("populate", "*");
   if (param?.categories) {
     const ids = param.categories.split(",");
