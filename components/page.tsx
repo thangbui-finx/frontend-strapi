@@ -2,7 +2,7 @@ import getBanners from "../app/src/apis/banners/getBanners";
 import { getPromotion } from "../app/src/apis/promotion/getPromotion";
 import MotionSection from "../app/src/components/effects/MotionSection";
 import Banner from "../app/src/components/layout/Banner";
-import Footer from "../app/src/components/layout/Footer";
+import Footer from "../app/src/components/layout/Footer/Footer";
 import Navbar from "../app/src/components/layout/Navbar";
 import PromotionFilterSidebar from "../app/src/components/promotion/FilterPromotion/PromotionFilterSidebar";
 import PromotionList from "../app/src/components/promotion/ListPromotion/PromotionList";
