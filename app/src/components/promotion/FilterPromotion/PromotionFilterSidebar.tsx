@@ -1,9 +1,9 @@
-import FilterGroup from "./FilterPromotion/FilterGroup";
-import getCategories from "../../apis/promotion/getCategories";
-import getCustomerGroup from "../../apis/promotion/getCustomerGroup";
-import getLocation from "../../apis/promotion/getLocation";
-import getPartners from "../../apis/promotion/getPartners";
-import getProducts from "../../apis/promotion/getProducts";
+import FilterGroup from "./FilterGroup";
+import getCategories from "../../../apis/promotion/getCategories";
+import getCustomerGroup from "../../../apis/promotion/getCustomerGroup";
+import getLocation from "../../../apis/promotion/getLocation";
+import getPartners from "../../../apis/promotion/getPartners";
+import getProducts from "../../../apis/promotion/getProducts";
 
 export default async function PromotionFilterSidebar() {
   const categories = await getCategories();
