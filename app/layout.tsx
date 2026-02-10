@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./src/components/layout/Navbar";
 import Footer from "./src/components/layout/Footer/Footer";
 import MotionSection from "./src/components/effects/MotionSection";
+import FallingApricot from "./src/components/effects/FallingApricot";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={`${roboto.className} antialiased`}>
+        <FallingApricot />
         <Navbar />
         {children}
         <MotionSection delay={0}>
