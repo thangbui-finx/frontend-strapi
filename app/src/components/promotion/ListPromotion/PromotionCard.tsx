@@ -15,9 +15,13 @@ export default function PromotionCard({ promotion }: Props) {
   const thumbnail = promotion.thumbnail?.url;
   const typeCard = promotion.products.map((p: any) => p.type);
   return (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{type: "spring", stiffness:300}}>
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
       <div className="rounded-lg banner-gradient">
-        <div className="p-2 flex justify-center items-center">
+        <div className="lg:p-2 p-3 xl:p-2  flex justify-center items-center">
           <img
             src={`${API_URL}${thumbnail}`}
             alt=""

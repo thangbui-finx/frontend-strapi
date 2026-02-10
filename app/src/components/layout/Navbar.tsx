@@ -43,7 +43,7 @@ export default function Navbar() {
   };
   return (
     <header className=" gap-30 sticky top-0 z-50 bg-white border-b">
-      <div className="hidden md:flex items-center justify-between px-8 h-22">
+      <div className="hidden  xl:flex items-center justify-between px-8 h-22">
         <img
           src="/logoVikki.jpg"
           alt=""
@@ -78,7 +78,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile */}
-      <div className="md:hidden flex items-center justify-between px-4 h-14">
+      <div className="xl:hidden flex items-center justify-between px-4 h-14">
         <img
           src="/logoVikki.jpg"
           className="h-8 cursor-pointer"
@@ -95,7 +95,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="fixed inset-0 z-50 bg-black/40 md:hidden "
+            className="fixed inset-0 z-50 bg-black/40 xl:hidden "
             onClick={() => setOpen(false)}
           >
             <motion.div
@@ -104,7 +104,7 @@ export default function Navbar() {
               animate="visible"
               exit="exit"
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute right-0 top-0 h-full w-4/5 bg-white p-6"
+              className="absolute right-0 top-0 h-full md:w-2/5 w-3/5 bg-white p-6"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-6">

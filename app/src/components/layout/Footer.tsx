@@ -5,33 +5,45 @@ import Banner from "./Banner";
 export default function Footer() {
   return (
     <div>
-      <div className=" grid grid-cols-3 p-4 inset-0 banner-gradient px-20">
-        <div className="">
+      <div className=" grid grid-cols-3 xl:p-4 py-1 items-center md:px-15 md:p-6 inset-0 banner-gradient xl:px-20">
+        <div>
           <img
             src="/phoneVikki.png
         
         "
             alt="phoneVikki"
-            className="w-70 h-80"
+            className=" h-25 w-25 md:w-45 md:h-45 mt-2 ml-2 xl:w-70 xl:h-80"
           />
         </div>
-        <div className="flex flex-col  justify-center gap-6">
-          <h3 className="text-3xl font-sans text-white font-extrabold">
+        <div className="flex flex-col justify-center gap-3 xl:gap-6">
+          <h3 className="xl:text-3xl text-xs md:text-2xl  font-sans text-white font-extrabold">
             Tận hưởng
             <br />
             Ngân hàng số Vikki
           </h3>
-          <div className="text-white  text-md">
+          <div className="text-white md:text-xl  xl:text-md text-xs">
             01 phút mở tài khoản, ngàn đặc quyền đang chờ bạn!
           </div>
         </div>
-        <div className="flex justify-center items-center gap-6">
+        <div className="flex justify-center items-center gap-2 xl:gap-6">
           <div className="">
-            <img src="/qrVikki.png" alt="" className="h-30 w-30" />
+            <img
+              src="/qrVikki.png"
+              alt=""
+              className="h-10 w-10 md:h-20 md:w-20 xl:h-30 xl:w-30"
+            />
           </div>
-          <div className="flex flex-col gap-4">
-            <img src="/appstoreVikki.png" alt="" className="h-12 w-25" />
-            <img src="/ggplayVikki.png" alt="" className="h-12 w-25" />
+          <div className="flex flex-col gap-2 xl:gap-4">
+            <img
+              src="/appstoreVikki.png"
+              alt=""
+              className="h-5 w-10 xl:h-12 xl:w-25 md:h-10 md:w-20"
+            />
+            <img
+              src="/ggplayVikki.png"
+              alt=""
+              className="h-5 w-10 xl:h-12 xl:w-25 md:h-10 md:w-20"
+            />
           </div>
         </div>
         <br />

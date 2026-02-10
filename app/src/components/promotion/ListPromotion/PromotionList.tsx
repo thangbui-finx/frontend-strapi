@@ -42,7 +42,7 @@ export default function PromotionList({ promotions }: Props) {
       <span>
         Có <strong>{promotions?.length ?? 0}</strong> ưu đãi:{" "}
       </span>
-      <div ref={parent} className="grid grid-cols-3 gap-6">
+      <div ref={parent} className="grid xl:grid-cols-3 lg:grid-cols-2 gap-6">
         {promotions?.map((item) => (
           <PromotionCard key={item.id} promotion={item} />
         ))}
