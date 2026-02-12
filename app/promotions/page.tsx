@@ -1,3 +1,4 @@
+import { param } from "framer-motion/client";
 import getBanners from "../src/apis/banners/getBanners";
 import { getPromotion } from "../src/apis/promotion/getPromotion";
 import MotionSection from "../src/components/effects/MotionSection";
@@ -9,13 +10,20 @@ import PromotionList from "../src/components/promotion/ListPromotion/PromotionLi
 export default async function PromotionPage({ searchParams }: any) {
   const params = await searchParams;
   console.log("page.tsx searchParams:", params);
+
+  const page = params.page ? Number(params.page) : 1;
+  const pageSize = params.pageSize ? Number(params.pageSize) : 1;
   const res = await getPromotion({
     categories: params.categories,
     partners: params.partners,
     customer_groups: params.customer_groups,
     products: params.products,
     search: params.search,
+    page: page,
+    pageSize: pageSize,
   });
+  const promotions = res.data;
+  const meta = res.meta;
   const banners = await getBanners();
   return (
     <div>
@@ -32,7 +40,7 @@ export default async function PromotionPage({ searchParams }: any) {
           </PromotionFilterMobile>
 
           <MotionSection>
-            <PromotionList promotions={res} />
+            <PromotionList promotions={promotions} meta={meta} />
           </MotionSection>
         </div>
       </main>

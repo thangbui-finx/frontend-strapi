@@ -5,6 +5,8 @@ type Params = {
   customer_groups?: string;
   products?: string;
   search?: string;
+  page?: number;
+  pageSize?: number;
 };
 export async function getPromotion(param?: Params) {
   const query = new URLSearchParams();
@@ -12,6 +14,12 @@ export async function getPromotion(param?: Params) {
     query.append("filters[title][$containsi]", param.search);
   }
   query.append("populate", "*");
+  if (param?.page) {
+    query.append("pagination[page]", String(param.page));
+  }
+  if (param?.pageSize) {
+    query.append("pagination[pageSize]", String(param.pageSize));
+  }
   if (param?.categories) {
     const ids = param.categories.split(",");
     ids.forEach((id) => {
@@ -35,5 +43,8 @@ export async function getPromotion(param?: Params) {
     cache: "no-store",
   });
   const data = await res.json();
-  return data.data;
+  return {
+    data: data.data,
+    meta: data.meta,
+  };
 }

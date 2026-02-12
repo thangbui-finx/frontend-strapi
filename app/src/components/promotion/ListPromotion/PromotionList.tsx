@@ -4,13 +4,13 @@ import PromotionCard from "./PromotionCard";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import PromotionFilterMobile from "../FilterMobile/PromotionFilterMobile";
-import PromotionFilterSidebar from "../FilterPromotion/PromotionFilterSidebar";
 
 type Props = {
   promotions: any[] | undefined;
+  meta?: any;
 };
-export default function PromotionList({ promotions }: Props) {
+export default function PromotionList({ promotions, meta }: Props) {
+  console.log("data promo", promotions);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [keyword, setKeyword] = useState(searchParams.get("search") ?? "");
@@ -23,13 +23,27 @@ export default function PromotionList({ promotions }: Props) {
       const params = new URLSearchParams(searchParams.toString());
       if (keyword) {
         params.set("search", keyword);
+        params.set("page", "1");
       } else {
         params.delete("search");
+        params.delete("page");
       }
-      router.push(`?${params.toString()}`, { scroll: false });
+      router.push(`/promotions?${params.toString()}`, { scroll: false });
     }, 400);
     return () => clearTimeout(timeout);
   }, [keyword]);
+  const currentPage = Number(searchParams.get("page") ?? "1");
+  const totalPages = meta?.pagination?.pageCount ?? 1;
+  const totalItems = meta?.pagination?.total ?? 0;
+  const gotoPage = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+    if (page <= 1) {
+      params.delete("page");
+    } else {
+      params.set("page", String(page));
+    }
+    router.push(`promotions?${params.toString()}`, { scroll: false });
+  };
   return (
     <section className="flex flex-col gap-6">
       <Input
@@ -46,6 +60,37 @@ export default function PromotionList({ promotions }: Props) {
         {promotions?.map((item) => (
           <PromotionCard key={item.id} promotion={item} />
         ))}
+      </div>
+      <div className="flex items-center justify-between mt-4">
+        <div className="text-sm text-gray-600">Tổng {totalItems} ưu đãi</div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => gotoPage(currentPage - 1)}
+            disabled={currentPage <= 1}
+            className="px-3 py-1 rounded border disabled:opacity-50 cursor-pointer"
+          >
+            Trước
+          </button>
+          {Array.from({ length: totalPages }).map((_, i) => {
+            const p = i + 1;
+            return (
+              <button
+                key={p}
+                onClick={() => gotoPage(p)}
+                className={`px-3 py-1 cursor-pointer rounded border ${p === currentPage ? "font-bold bg-gray-100" : ""} `}
+              >
+                {p}
+              </button>
+            );
+          })}
+          <button
+            onClick={() => gotoPage(currentPage + 1)}
+            disabled={currentPage >= totalPages}
+            className="px-3 py-1 rounded border disabled:opacity-50 cursor-pointer"
+          >
+            Sau
+          </button>
+        </div>
       </div>
     </section>
   );
