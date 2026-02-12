@@ -43,7 +43,7 @@ export default function FilterGroup({ title, items }: Props) {
     } else {
       params.delete(paramsKey);
     }
-    router.push(`/promotions?${params.toString()}`);
+    router.push(`/promotions?${params.toString()}`, { scroll: false });
   }
 
   function toggleMultiple(ids: number[], select: boolean) {
@@ -61,7 +61,7 @@ export default function FilterGroup({ title, items }: Props) {
     } else {
       params.delete(paramsKey);
     }
-    router.push(`/promotions?${params.toString()}`);
+    router.push(`/promotions?${params.toString()}`, { scroll: false });
   }
   return (
     <div className="flex flex-col justify-center mb-4">

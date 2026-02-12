@@ -126,6 +126,7 @@ export default function Navbar() {
                       <li key={item.label} className="w-full">
                         <Link
                           href={item.href}
+                          scroll={false}
                           onClick={() => setOpen(false)}
                           className={`block py-2 text-base cursor-pointer hover:scale-105 transition-transform ${
                             isActive

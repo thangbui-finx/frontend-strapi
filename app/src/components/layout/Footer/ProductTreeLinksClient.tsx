@@ -40,7 +40,11 @@ export default function ProductTreeLinksClient({ products }: Props) {
               <ul className="mt-2 space-y-2">
                 {list.map((product: any) => (
                   <li key={product.id}>
-                    <Link href={""} className="text-white text-sm">
+                    <Link
+                      href={""}
+                      className="text-white text-sm"
+                      scroll={false}
+                    >
                       {product.name}
                     </Link>
                   </li>
