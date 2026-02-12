@@ -1,8 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { ArrowBigDown, ArrowDown, ArrowRight, ChevronDown } from "lucide-react";
-import Banner from "../Banner";
 import getProducts from "@/app/src/apis/promotion/getProducts";
 import ProductTreeLinksClient from "./ProductTreeLinksClient";
+import { motion } from "framer-motion";
+import HotlineShake from "./HotlineShake";
 
 export default async function Footer() {
   const products = await getProducts();
@@ -64,11 +63,7 @@ export default async function Footer() {
               alt="Footer Logo"
               className="h-20 w-45"
             />
-            <img
-              src="/hotline-vikki-footer.png"
-              alt="hotline-vikki"
-              className=" w-45 mt-6"
-            />
+            <HotlineShake />
             <p className="text-white text-xs mt-10">
               Email: <br />
               <a href="mailto:19006608@vikkibank.vn">19006608@vikkibank.vn</a>

@@ -33,6 +33,12 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={`${roboto.className} antialiased`}>
+        <img src="/logo_zalo.svg" alt="logoZalo" className="fixed z-50 right-2 bottom-30" />
+        <img
+          src="/vikki-hotline-icon.png"
+          alt="vikki-hotline-icon"
+          className="fixed right-2 bottom-0 z-50  "
+        />
         <FallingApricot />
         <Navbar />
         {children}

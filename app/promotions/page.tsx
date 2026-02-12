@@ -20,7 +20,7 @@ export default async function PromotionPage({ searchParams }: any) {
   return (
     <div>
       <Banner banners={banners} />
-      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 sm:p-6 lg:p-12 pt-10 bg-gray-100">
+      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 sm:p-6 lg:p-12 pt-10 bg-white">
         <div className="hidden lg:block lg:col-span-1">
           <MotionSection>
             <PromotionFilterSidebar />
