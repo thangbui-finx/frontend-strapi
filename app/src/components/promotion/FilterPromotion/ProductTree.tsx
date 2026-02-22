@@ -48,7 +48,7 @@ export default function ProductTree({
     });
   };
   return (
-    <div className="flex flex-col w-full space-y-2 pl-3 gap-2">
+    <div className="flex flex-col w-full space-y-2 gap-2">
       {Object.keys(TYPE_LABEL).map((type) => (
         <div key={type} className="">
           <div className="flex gap-2 justify-center  items-center">
@@ -72,9 +72,9 @@ export default function ProductTree({
                   {TYPE_LABEL[type]}
                 </span>
                 {openTypes[type] ? (
-                  <Minus className="w-4 h-4" />
+                  <Minus className="w-4 h-4 cursor-pointer" />
                 ) : (
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-4 h-4 cursor-pointer" />
                 )}
               </div>
             </button>
@@ -85,7 +85,7 @@ export default function ProductTree({
               {grouped[type]?.map((product: any) => (
                 <li
                   key={product.id}
-                  className="flex justify-center items-center gap-3 cursor-pointer text-sm text-gray-600 hover:text-black"
+                  className="flex items-center gap-3 cursor-pointer mt-3 text-sm text-gray-600 hover:text-black"
                 >
                   <input
                     type="checkbox"

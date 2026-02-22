@@ -2,7 +2,7 @@
 import { Input } from "@/components/ui/input";
 import PromotionCard from "./PromotionCard";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 type Props = {
@@ -14,10 +14,26 @@ export default function PromotionList({ promotions, meta }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [keyword, setKeyword] = useState(searchParams.get("search") ?? "");
+  const listRef = useRef<HTMLDivElement | null>(null);
+  const currentPage = Number(searchParams.get("page") ?? "1");
+  const totalPages = meta?.pagination?.pageCount ?? 1;
+  const totalItems = meta?.pagination?.total ?? 0;
+  const isFirstRender = useRef(true);
   const [parent] = useAutoAnimate({
     duration: 250,
     easing: "ease-out",
   });
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    listRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [currentPage]);
   useEffect(() => {
     const timeout = setTimeout(() => {
       const params = new URLSearchParams(searchParams.toString());
@@ -32,9 +48,7 @@ export default function PromotionList({ promotions, meta }: Props) {
     }, 400);
     return () => clearTimeout(timeout);
   }, [keyword]);
-  const currentPage = Number(searchParams.get("page") ?? "1");
-  const totalPages = meta?.pagination?.pageCount ?? 1;
-  const totalItems = meta?.pagination?.total ?? 0;
+
   const gotoPage = (page: number) => {
     const params = new URLSearchParams(searchParams);
     if (page <= 1) {
@@ -45,7 +59,7 @@ export default function PromotionList({ promotions, meta }: Props) {
     router.push(`promotions?${params.toString()}`, { scroll: false });
   };
   return (
-    <section className="flex flex-col gap-6">
+    <section ref={listRef} className="flex flex-col gap-6">
       <Input
         type="text"
         placeholder="Tìm kiếm ưu đãi"
@@ -56,6 +70,7 @@ export default function PromotionList({ promotions, meta }: Props) {
       <span>
         Có <strong>{promotions?.length ?? 0}</strong> ưu đãi:{" "}
       </span>
+
       <div ref={parent} className="grid xl:grid-cols-3 lg:grid-cols-2 gap-6">
         {promotions?.map((item) => (
           <PromotionCard key={item.id} promotion={item} />

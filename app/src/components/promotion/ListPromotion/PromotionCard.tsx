@@ -21,11 +21,11 @@ export default function PromotionCard({ promotion }: Props) {
       transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="rounded-lg banner-gradient">
-        <div className="lg:p-2 p-3 xl:p-2  flex justify-center items-center">
+        <div className="lg:p-2 p-3 xl:p-2 h-50 w-full overflow-hidden  flex justify-center items-center">
           <img
             src={`${API_URL}${thumbnail}`}
             alt=""
-            className="rounded-md h-50 w-full"
+            className="rounded-md w-full bg-white h-full object-contain"
           />
         </div>
 
@@ -34,7 +34,7 @@ export default function PromotionCard({ promotion }: Props) {
           <h4 className="font-bold bg-amber-500 text-white w-[40%] rounded-md text-center">
             {partners[0]?.name}
           </h4>
-          <p className="text-white">{title}</p>
+          <p className="text-white line-clamp-2">{title}</p>
           <p className="text-red-500">Kết thúc: {formatRegisterDeadline}</p>
           <a
             href=""

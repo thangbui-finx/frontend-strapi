@@ -12,7 +12,7 @@ export default async function PromotionPage({ searchParams }: any) {
   console.log("page.tsx searchParams:", params);
 
   const page = params.page ? Number(params.page) : 1;
-  const pageSize = params.pageSize ? Number(params.pageSize) : 9;
+  const pageSize = params.pageSize ? Number(params.pageSize) : 6;
   const res = await getPromotion({
     categories: params.categories,
     partners: params.partners,
