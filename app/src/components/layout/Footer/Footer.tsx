@@ -2,6 +2,7 @@ import getProducts from "@/app/src/apis/promotion/getProducts";
 import ProductTreeLinksClient from "./ProductTreeLinksClient";
 import { motion } from "framer-motion";
 import HotlineShake from "./HotlineShake";
+import AboutPaymentCard from "./AboutPaymentCard";
 
 export default async function Footer() {
   const products = await getProducts();
@@ -49,12 +50,10 @@ export default async function Footer() {
           </div>
         </div>
         <br />
-        {/*  <Button className="w-[30%] h-[55%] p-4 flex justify-between">
-          <span className="text-lg">Liên hệ ngay</span>
-          <ArrowRight className="w-5 h-5" />
-        </Button> */}
       </div>
-
+      <div>
+        <AboutPaymentCard />
+      </div>
       <footer className="banner-gradient p-5 mt-20 ">
         <div className="grid grid-cols-5 p-4 ">
           <div className="col-span-1 ml-4">
