@@ -8,7 +8,9 @@ type Params = {
   page?: number;
   pageSize?: number;
 };
-export async function getPromotion(param?: Params) {
+export async function getPromotion(
+  param?: Params,
+): Promise<{ data: any[]; meta: any }> {
   const query = new URLSearchParams();
   if (param?.search) {
     query.append("filters[title][$containsi]", param.search);

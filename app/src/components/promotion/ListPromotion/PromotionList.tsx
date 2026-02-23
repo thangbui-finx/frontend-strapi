@@ -2,15 +2,14 @@
 import { Input } from "@/components/ui/input";
 import PromotionCard from "./PromotionCard";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 type Props = {
-  promotions: any[] | undefined;
+  promotions: any[];
   meta?: any;
 };
-export default function PromotionList({ promotions, meta }: Props) {
-  console.log("data promo", promotions);
+export default function PromotionList({ promotions = [], meta }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [keyword, setKeyword] = useState(searchParams.get("search") ?? "");
