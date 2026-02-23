@@ -7,7 +7,7 @@ export default function HotlineShake() {
     <motion.img
       src="/hotline-vikki-footer.png"
       alt="hotline-vikki"
-      className="w-45 mt-6"
+      className="w-60 mt-5 md:w-90 xl:w-45 xl:mt-6"
       animate={{
         rotate: [0, -5, 5, -5, 5, 0],
       }}

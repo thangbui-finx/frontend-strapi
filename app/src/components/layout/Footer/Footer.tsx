@@ -10,9 +10,7 @@ export default async function Footer() {
       <div className=" grid grid-cols-3 xl:p-4 py-1 items-center md:px-15 md:p-6 inset-0 banner-gradient xl:px-20">
         <div>
           <img
-            src="/phoneVikki.png
-        
-        "
+            src="/phoneVikki.png"
             alt="phoneVikki"
             className=" h-25 w-25 md:w-45 md:h-45 mt-2 ml-2 xl:w-70 xl:h-80"
           />
@@ -54,26 +52,26 @@ export default async function Footer() {
         <AboutPaymentCard />
       </div>
       <footer className="banner-gradient p-5 mt-20 ">
-        <div className="grid grid-cols-5 p-4 ">
-          <div className="col-span-1 ml-4">
+        <div className="grid grid-cols-1 justify-self-center md:grid-cols-5 xl:grid-cols-5 p-4  ">
+          <div className="col-span-1 ml-4 flex flex-col items-center">
             <img
               src="/logo-footer.png"
               alt="Footer Logo"
-              className="h-20 w-45"
+              className=" xl:h-20 xl:w-45"
             />
             <HotlineShake />
-            <p className="text-white text-xs mt-10">
-              Email: <br />
+            <p className="text-white text-xs mt-10 md:mt-6 p-2 ">
+              Email:
               <a href="mailto:19006608@vikkibank.vn">19006608@vikkibank.vn</a>
               <br />
               Địa chỉ: 72 Lý Thường Kiệt, phường Cửa Nam, Thành phố Hà Nội, Việt
               Nam
             </p>
           </div>
-          <div className="col-span-3">
+          <div className="xl:col-span-3 md:col-span-3">
             <ProductTreeLinksClient products={products} />
           </div>
-          <div className="flex flex-col col-span-1 p-2 gap-3">
+          <div className="flex flex-col col-span-1 px-7 gap-3">
             <span className="text-white flex gap-2 text-sm font-bold">
               Tải ứng dụng Vikki
             </span>
@@ -85,19 +83,19 @@ export default async function Footer() {
                 <img
                   src="/qrVikki.png"
                   alt=""
-                  className="h-10 w-10 md:h-10 md:w-20 xl:h-20 xl:w-20"
+                  className="h-35 w-35 md:h-15 md:w-25 xl:h-20 xl:w-20"
                 />
               </div>
               <div className="flex flex-col gap-2 xl:gap-4">
                 <img
                   src="/appstoreVikki.png"
                   alt=""
-                  className="h-5 w-10 xl:h-7 xl:w-25 md:h-10 md:w-20"
+                  className="h-10 w-35 xl:h-7 xl:w-25 md:h-5 md:w-20"
                 />
                 <img
                   src="/ggplayVikki.png"
                   alt=""
-                  className="h-5 w-10 xl:h-7 xl:w-25 md:h-10 md:w-20"
+                  className="h-10 w-35 xl:h-7 xl:w-25 md:h-5 md:w-20"
                 />
               </div>
             </div>
