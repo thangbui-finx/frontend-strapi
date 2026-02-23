@@ -1,6 +1,5 @@
 import getProducts from "@/app/src/apis/promotion/getProducts";
 import ProductTreeLinksClient from "./ProductTreeLinksClient";
-import { motion } from "framer-motion";
 import HotlineShake from "./HotlineShake";
 import AboutPaymentCard from "./AboutPaymentCard";
 

@@ -1,6 +1,13 @@
+"use client";
+import { motion } from "framer-motion";
 export default function AboutPaymentCard() {
   return (
-    <div className="flex flex-col items-center mt-10">
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      className="flex flex-col items-center mt-10"
+    >
       <h1 className="font-bold text-3xl">Thẻ thanh toán VikkiGO có gì?</h1>
       <div className="grid grid-cols-3 w-full mt-4">
         <div className="flex flex-col items-center justify-center">
@@ -19,6 +26,6 @@ export default function AboutPaymentCard() {
           <p>Thẻ phi vật lý sử dụng thanh toán online</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
