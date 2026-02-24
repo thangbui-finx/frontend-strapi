@@ -1,7 +1,7 @@
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
-export default async function POST(req: Request) {
+export async function POST(req: Request) {
   const secret = req.headers.get("x-secret");
   if (secret !== process.env.REVALIDATE_SECRET) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
