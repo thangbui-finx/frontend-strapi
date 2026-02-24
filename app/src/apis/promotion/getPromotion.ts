@@ -42,7 +42,7 @@ export async function getPromotion(
   }
   console.log(`${API_URL}/api/promotions?${query.toString()}`);
   const res = await fetch(`${API_URL}/api/promotions?${query.toString()}`, {
-    cache: "no-store",
+    next: { tags: ["promotions"] },
   });
   const data = await res.json();
   return {
