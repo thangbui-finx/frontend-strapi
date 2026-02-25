@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const USER = process.env.BASIC_AUTH_USER;
-const PASS = process.env.BASIC_AUTH_PASS;
+export default function proxy(req: NextRequest) {
+  const USER = process.env.BASIC_AUTH_USER;
+  const PASS = process.env.BASIC_AUTH_PASS;
 
-export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   /*  if (
     process.env.NODE_ENV === "production" &&
